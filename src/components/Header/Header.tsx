@@ -14,7 +14,7 @@ function Header() {
   };
 
   return (
-    <div className={classes.header}>
+    <header className={classes.header}>
       <div className={classes.headerContentWrapper}>
         <div className={classes.titleWrap}>
           <div className={classes.logoWrap}>
@@ -29,7 +29,7 @@ function Header() {
         </div>
         <Button onClick={handleLogout}>Выйти</Button>
       </div>
-    </div>
+    </header>
   );
 }
 
