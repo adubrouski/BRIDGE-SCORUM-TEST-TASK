@@ -2,7 +2,7 @@ import { catchError, map, mergeMap, tap } from "rxjs/operators";
 import { EMPTY, from, of, OperatorFunction } from "rxjs";
 import { toast } from "react-hot-toast";
 import { Epic, ofType } from "redux-observable";
-import AuthService from "services/auth.service";
+import { AuthService, StorageService } from "services";
 import { UserEntity } from "types/user.entity";
 import {
   AUTHORIZE,
@@ -30,7 +30,7 @@ export const loginEpic: Epic<UserActions, UserActions> = (action$) =>
         })
       ).pipe(
         tap(() => {
-          localStorage.setItem("isAuthorized", "true");
+          StorageService.set("isAuthorized", "true");
         }),
         map((user: UserEntity) => createAuthorizeSuccessAction(user)),
         catchError((error) => {
@@ -46,7 +46,7 @@ export const checkAuthorization: Epic<UserActions, UserActions> = (action$) =>
   action$.pipe(
     ofType(CHECK_AUTHORIZATION),
     mergeMap(() => {
-      if (localStorage.getItem("isAuthorized")) {
+      if (StorageService.get("isAuthorized")) {
         return of(createAuthorizeSuccessAction(AuthService.mockUser));
       }
 
@@ -58,7 +58,7 @@ export const logoutEpic: Epic<UserActions, UserActions> = (action$) =>
   action$.pipe(
     ofType(LOGOUT),
     tap(() => {
-      localStorage.removeItem("isAuthorized");
+      StorageService.remove("isAuthorized");
     }),
     mergeMap(() => EMPTY)
   );
