@@ -47,14 +47,14 @@ function LoginPage() {
     <div className={classes.loginPageWrap}>
       <img src={logo} className={classes.logo} alt="logo" />
       <form className={classes.loginPageForm} onSubmit={handleSubmit}>
-        <InputLabel labelContent="Введите логин:">
+        <InputLabel labelContent="Имя пользователя:">
           <Input
             name="username"
             onChange={handleUsernameChange}
             value={credentials.username}
           />
         </InputLabel>
-        <InputLabel labelContent="Введите пароль:">
+        <InputLabel labelContent="Пароль:">
           <InputPassword
             name="password"
             onChange={handlePasswordChange}

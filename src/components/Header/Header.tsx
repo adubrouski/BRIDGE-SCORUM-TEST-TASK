@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import classes from "components/Header/Header.module.scss";
 import Button from "components/Button/Button";
 import logo from "assets/images/logo.png";
@@ -16,12 +17,12 @@ function Header() {
   return (
     <header className={classes.header}>
       <div className={classes.headerContentWrapper}>
-        <div className={classes.titleWrap}>
+        <Link to="/" className={classes.titleWrap}>
           <div className={classes.logoWrap}>
             <img src={logo} alt="logo" />
           </div>
           <h1>BRIDGE</h1>
-        </div>
+        </Link>
         <div className={classes.balanceInfo}>
           <span>Баланс: </span>
           <span>{balance}</span>
