@@ -5,8 +5,7 @@
   "main": "dist/main.js",
   "scripts": {
     "start": "webpack serve --mode development --config config/webpack.config.js",
-    "build-prod": "cross-env webpack --config config/webpack.config.js --mode production",
-    "build-dev": "cross-env SOURCE_MAP=true webpack --config config/webpack.config.js --mode production"
+    "build": "cross-env webpack --config config/webpack.config.js --mode production"
   },
   "author": "Anton Dubrouski",
   "license": "ISC",
