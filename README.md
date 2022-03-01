@@ -4,7 +4,8 @@ Test task for the Middle Front-end Developer position
 
 **[DEMO](https://bridge-cards-game.netlify.app/)** <br>
 
-**Test credentials**
+## Test credentials
+
 - Login: `admin` <br>
 - Password: `123456`
 
