@@ -7,10 +7,11 @@ import Button from "components/Button/Button";
 import { createReplayAction } from "store/modules/cards/cards.actions";
 import classNames from "classnames";
 import { useTypedDispatch, useTypedSelector } from "hooks";
+import BetConstantsPanel from "components/BetConstantsPanel/BetConstantsPanel";
 
 interface BoardHeaderProps {
   betValue?: number;
-  onBetValueChange: (bet: number) => void;
+  onBetValueChange: (bet: number, isConstant?: boolean) => void;
 }
 
 function BoardHeader({ betValue, onBetValueChange }: BoardHeaderProps) {
@@ -38,7 +39,7 @@ function BoardHeader({ betValue, onBetValueChange }: BoardHeaderProps) {
     if (gameResult === ResultEnum.Winning) {
       return (
         <span className={className}>
-          Вы выйграли {bet! * coefficient}
+          Вы выйграли {(bet! * coefficient).toFixed(2)}
           <span>$</span>
         </span>
       );
@@ -56,19 +57,23 @@ function BoardHeader({ betValue, onBetValueChange }: BoardHeaderProps) {
       {result === ResultEnum.NotDefined ? (
         <>
           <div className={classes.label}>Кто выйграет?</div>
-          <InputLabel
-            labelContent="Ваша ставка:"
-            style={{ display: "flex", alignItems: "center", gap: 10 }}
-          >
-            <InputTypeNumber
-              name="bet"
-              min={0.01}
-              max={balance}
-              onChange={onBetValueChange}
-              value={betValue}
-              style={{ width: 200 }}
+          <div>
+            <InputLabel
+              labelContent="Ваша ставка:"
+              style={{ display: "flex", alignItems: "center", gap: 10 }}
+            >
+              <InputTypeNumber
+                name="bet"
+                min={0.01}
+                max={balance}
+                onChange={onBetValueChange}
+                value={betValue}
+              />
+            </InputLabel>
+            <BetConstantsPanel
+              onChange={(value) => onBetValueChange(value, true)}
             />
-          </InputLabel>
+          </div>
         </>
       ) : (
         renderResult(result)

@@ -6,7 +6,6 @@
   outline: none;
   cursor: pointer;
   position: relative;
-  perspective: 800px;
   &:focus {
     outline: 3px solid var(--main-color);
   }
@@ -33,7 +32,6 @@
   position: absolute;
   top: 0;
   left: 0;
-  transition: 0.5s;
   backface-visibility: hidden;
 }
 

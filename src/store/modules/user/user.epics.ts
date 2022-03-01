@@ -15,6 +15,7 @@ import {
   createAuthorizeSuccessAction,
 } from "store/modules/user/user.actions";
 import { UserActions } from "store/modules/user/user.type";
+import appConfig from "../../../app-config.json";
 
 export const loginEpic: Epic<UserActions, UserActions> = (action$) =>
   action$.pipe(
@@ -47,7 +48,7 @@ export const checkAuthorization: Epic<UserActions, UserActions> = (action$) =>
     ofType(CHECK_AUTHORIZATION),
     mergeMap(() => {
       if (StorageService.get("isAuthorized")) {
-        return of(createAuthorizeSuccessAction(AuthService.mockUser));
+        return of(createAuthorizeSuccessAction(appConfig.mockUser));
       }
 
       return EMPTY;

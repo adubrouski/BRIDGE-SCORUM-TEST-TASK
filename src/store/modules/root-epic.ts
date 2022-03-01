@@ -9,7 +9,7 @@ import {
   getGameResultEpic,
 } from "store/modules/cards/cards.epics";
 
-export const rootEpic = combineEpics<any>(
+export const rootEpic = combineEpics<any, any, any, any>(
   loginEpic,
   logoutEpic,
   checkAuthorization,

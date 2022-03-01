@@ -6,13 +6,15 @@ import {
   SET_RESULT,
   SHOW_CARDS,
 } from "store/modules/cards/cards.constants";
+import appConfig from "../../../app-config.json";
 
 const initialState: CardsSlice = {
+  isCardsFetching: false,
   cards: [
     { isHidden: true, image: null, value: NaN },
     { isHidden: true, image: null, value: NaN },
   ],
-  winningCoefficient: 2,
+  winningCoefficient: appConfig.winningCoefficient,
   currentGame: {
     selectedCard: undefined,
     bet: undefined,
@@ -28,6 +30,7 @@ export const cardsReducer = (
     case SELECT_CARD:
       return {
         ...state,
+        isCardsFetching: true,
         currentGame: {
           ...state.currentGame,
           selectedCard: action.payload.cardIndex,
@@ -38,6 +41,7 @@ export const cardsReducer = (
       return {
         ...state,
         cards: action.payload,
+        isCardsFetching: false,
       };
     case SET_RESULT: {
       return {

@@ -6,3 +6,5 @@ export const rootReducer = combineReducers({
   user: userReducer,
   cards: cardsReducer,
 });
+
+export type StoreType = ReturnType<typeof rootReducer>;

@@ -9,6 +9,7 @@ import {
 } from "store/modules/cards/cards.actions";
 
 export interface CardsSlice {
+  isCardsFetching: boolean;
   cards: CardEntity[];
   winningCoefficient: number;
   currentGame: {

@@ -18,6 +18,7 @@ import { CardEntity } from "types/card.entity";
 import { createChargeWinningAction } from "store/modules/user/user.actions";
 import { toast } from "react-hot-toast";
 import { UserActions } from "store/modules/user/user.type";
+import { StoreType } from "store/modules/root-reducer";
 
 export const fetchCardsEpic: Epic<CardsActions, CardsActions> = (action$) =>
   action$.pipe(
@@ -49,8 +50,11 @@ export const fetchCardsEpic: Epic<CardsActions, CardsActions> = (action$) =>
     )
   );
 
-export const getGameResultEpic: Epic<CardsActions, CardsActions> = ($action) =>
-  $action.pipe(
+export const getGameResultEpic: Epic<CardsActions, CardsActions, StoreType> = (
+  action$,
+  state$
+) =>
+  action$.pipe(
     ofType(GET_GAME_RESULT) as OperatorFunction<
       CardsActions,
       ReturnType<typeof createGetGameResultAction>
@@ -88,7 +92,10 @@ export const getGameResultEpic: Epic<CardsActions, CardsActions> = ($action) =>
           actions.push(
             createChargeWinningAction({
               bet: action.payload.bet,
-              coefficient: result === ResultEnum.Winning ? 2 : 1,
+              coefficient:
+                result === ResultEnum.Winning
+                  ? state$.value.cards.winningCoefficient
+                  : 1,
             })
           );
         }

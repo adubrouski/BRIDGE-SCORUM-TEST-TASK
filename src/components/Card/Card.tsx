@@ -1,5 +1,6 @@
 import React from "react";
 import classes from "components/Card/Card.module.scss";
+import classNames from "classnames";
 
 interface CardProps {
   image: string | null;
@@ -9,12 +10,14 @@ interface CardProps {
 }
 
 function Card({ image, active, onClick, disabled }: CardProps) {
+  const composedClassName = classNames(classes.card, {
+    [classes.card__active]: active,
+  });
+
   return (
     <button
       type="button"
-      className={
-        active ? `${classes.card} ${classes.card__active}` : classes.card
-      }
+      className={composedClassName}
       onClick={onClick}
       disabled={disabled}
     >

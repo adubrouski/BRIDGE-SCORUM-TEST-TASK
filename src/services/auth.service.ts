@@ -1,5 +1,6 @@
 import { HttpError } from "errors";
 import { UserEntity } from "types/user.entity";
+import appConfig from "../app-config.json";
 
 export interface UserCredentials {
   username: string;
@@ -7,23 +8,11 @@ export interface UserCredentials {
 }
 
 export default class AuthService {
-  public static mockUser: UserEntity = {
-    id: "494feda6-1912-4385-bb50-25fa1b29b242",
-    name: "Admin",
-    balance: 1000,
-  };
-
-  private static mockCredentials: UserCredentials = {
-    username: "admin",
-    password: "123456",
-  };
-
   static async login({
     username,
     password,
   }: UserCredentials): Promise<UserEntity> {
-    const { mockUser } = AuthService;
-    const { mockCredentials } = AuthService;
+    const { mockUser, mockCredentials } = appConfig;
 
     return new Promise((resolve, reject) => {
       setTimeout(() => {
@@ -34,7 +23,9 @@ export default class AuthService {
           return resolve(mockUser);
         }
 
-        return reject(new HttpError("Неверный логин или пароль"));
+        return reject(
+          new HttpError("Имя пользователя или пароль введены не верно")
+        );
       }, 1000);
     });
   }
