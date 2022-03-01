@@ -30,29 +30,26 @@ const getConfiguredCssLoader = () => ({
   },
 });
 
-const getConfiguredFileLoader = (outputPath) => ({
-  loader: "file-loader",
+const getConfiguredBabelLoaderTS = (isProductionEnv, isDevelopmentEnv) => ({
+  loader: require.resolve("babel-loader"),
   options: {
-    esModule: false,
-    name: "[name].[contenthash].[ext]",
-    outputPath,
-  },
-});
-
-const getConfiguredBabelLoaderTS = () => ({
-  loader: "babel-loader",
-  options: {
+    customize: require.resolve("babel-preset-react-app/webpack-overrides"),
     presets: [
-      ["@babel/preset-env", { useBuiltIns: "entry", corejs: "core-js@3" }],
-      "@babel/preset-react",
-      "@babel/preset-typescript",
+      [
+        require.resolve("babel-preset-react-app"),
+        {
+          runtime: "classic",
+        },
+      ],
     ],
+    babelrc: false,
+    configFile: false,
     plugins: [
-      "@babel/plugin-proposal-class-properties",
-      "@babel/plugin-syntax-dynamic-import",
-      "@babel/plugin-proposal-object-rest-spread",
-    ],
+      isDevelopmentEnv && require.resolve("react-refresh/babel"),
+    ].filter(Boolean),
     cacheDirectory: true,
+    cacheCompression: false,
+    compact: isProductionEnv,
   },
 });
 
@@ -82,10 +79,9 @@ const getDirectoriesInFolder = (dir) => {
 
 module.exports = {
   getConfiguredCssLoader,
-  getConfiguredFileLoader,
-  getConfiguredBabelLoaderTS,
   getConfiguredBabelLoaderJS,
   getDirectoriesInFolder,
+  getConfiguredBabelLoaderTS,
   PATHS,
   FILES_EXTENSIONS,
 };

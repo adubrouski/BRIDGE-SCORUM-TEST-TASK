@@ -9,8 +9,8 @@ const ForkTsCheckerWebpackPlugin = require("react-dev-utils/ForkTsCheckerWebpack
 const {
   getConfiguredCssLoader,
   getConfiguredBabelLoaderJS,
-  getConfiguredBabelLoaderTS,
   getDirectoriesInFolder,
+  getConfiguredBabelLoaderTS,
   PATHS,
   FILES_EXTENSIONS,
 } = require("./webpack-utils");
@@ -79,23 +79,10 @@ module.exports = (env, argv) => {
     },
     module: {
       rules: [
-        shouldUseSourceMap && {
-          enforce: "pre",
-          exclude: /@babel(?:\/|\\{1,2})runtime/,
-          test: /\.(js|mjs|jsx|ts|tsx|css)$/,
-          loader: require.resolve("source-map-loader"),
-        },
         {
-          test: FILES_EXTENSIONS.ts,
-          use: [
-            getConfiguredBabelLoaderTS(),
-            {
-              loader: "ts-loader",
-              options: {
-                transpileOnly: true,
-              },
-            },
-          ],
+          test: /\.(js|mjs|jsx|ts|tsx)$/,
+          include: PATHS.src,
+          use: [getConfiguredBabelLoaderTS(isProductionEnv, isDevelopmentEnv)],
         },
         {
           test: FILES_EXTENSIONS.js,
@@ -184,7 +171,6 @@ module.exports = (env, argv) => {
         },
       }),
       new ESLintPlugin({
-        // Plugin options
         extensions: ["js", "mjs", "jsx", "ts", "tsx"],
         formatter: require.resolve("react-dev-utils/eslintFormatter"),
         eslintPath: require.resolve("eslint"),
@@ -192,7 +178,6 @@ module.exports = (env, argv) => {
         context: PATHS.src,
         cache: true,
         cacheLocation: path.join(PATHS.nodeModules, ".cache/.eslintcache"),
-        // ESLint class options
         cwd: PATHS.app,
         resolvePluginsRelativeTo: __dirname,
         baseConfig: {
