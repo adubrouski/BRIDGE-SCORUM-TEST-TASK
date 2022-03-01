@@ -72,6 +72,7 @@ function BoardHeader({ betValue, onBetValueChange }: BoardHeaderProps) {
             </InputLabel>
             <BetConstantsPanel
               onChange={(value) => onBetValueChange(value, true)}
+              balance={balance}
             />
           </div>
         </>
