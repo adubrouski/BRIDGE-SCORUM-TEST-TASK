@@ -1,12 +1,11 @@
 import React, { FormEvent, useState } from "react";
 import Button from "components/Button/Button";
-import { useTypedDispatch } from "hooks/useTypedDispatch.hook";
-import { useTypedSelector } from "hooks/useTypedSelector.hook";
 import { createAuthorizeAction } from "store/modules/user/user.actions";
 import logo from "assets/images/logo.png";
 import { UserCredentials } from "services/auth.service";
 import { toast } from "react-hot-toast";
 import InputPassword from "components/Input/InputPassword";
+import { useTypedDispatch, useTypedSelector } from "hooks";
 import classes from "./LoginPage.module.scss";
 import Input from "../../components/Input/Input";
 import InputLabel from "../../components/Input/InputLabel";

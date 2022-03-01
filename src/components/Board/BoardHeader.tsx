@@ -5,9 +5,8 @@ import InputLabel from "components/Input/InputLabel";
 import InputTypeNumber from "components/Input/InputNumber";
 import Button from "components/Button/Button";
 import { createReplayAction } from "store/modules/cards/cards.actions";
-import { useTypedSelector } from "hooks/useTypedSelector.hook";
-import { useTypedDispatch } from "hooks/useTypedDispatch.hook";
 import classNames from "classnames";
+import { useTypedDispatch, useTypedSelector } from "hooks";
 
 interface BoardHeaderProps {
   betValue?: number;

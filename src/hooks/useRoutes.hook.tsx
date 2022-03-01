@@ -1,9 +1,9 @@
-import React from 'react';
-import { Routes, Route, Navigate } from 'react-router-dom';
-import MainPage from '../pages/MainPage/MainPage';
-import LoginPage from '../pages/LoginPage/LoginPage';
+import React from "react";
+import { Routes, Route, Navigate } from "react-router-dom";
+import MainPage from "pages/MainPage/MainPage";
+import LoginPage from "pages/LoginPage/LoginPage";
 
-export const useRoutes = (isAuthorized: boolean) => {
+const useRoutes = (isAuthorized: boolean) => {
   if (isAuthorized) {
     return (
       <Routes>
@@ -20,3 +20,5 @@ export const useRoutes = (isAuthorized: boolean) => {
     </Routes>
   );
 };
+
+export default useRoutes;

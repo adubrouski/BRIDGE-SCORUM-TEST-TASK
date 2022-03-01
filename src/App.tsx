@@ -1,9 +1,7 @@
 import React, { useEffect } from "react";
-import { useRoutes } from "routes/useRoutes";
-import { useTypedSelector } from "hooks/useTypedSelector.hook";
-import { useTypedDispatch } from "hooks/useTypedDispatch.hook";
 import { createCheckAuthorizationAction } from "store/modules/user/user.actions";
 import "./App.scss";
+import { useRoutes, useTypedDispatch, useTypedSelector } from "hooks";
 
 function App() {
   const { isAuthorized } = useTypedSelector((state) => state.user);

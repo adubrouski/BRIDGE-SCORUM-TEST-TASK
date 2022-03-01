@@ -2,9 +2,8 @@ import React from "react";
 import classes from "components/Header/Header.module.scss";
 import Button from "components/Button/Button";
 import logo from "assets/images/logo.png";
-import { useTypedSelector } from "hooks/useTypedSelector.hook";
 import { createLogoutAction } from "store/modules/user/user.actions";
-import { useTypedDispatch } from "hooks/useTypedDispatch.hook";
+import { useTypedDispatch, useTypedSelector } from "hooks";
 
 function Header() {
   const dispatch = useTypedDispatch();

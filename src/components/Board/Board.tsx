@@ -2,13 +2,12 @@ import React, { useRef, useState } from "react";
 import classes from "components/Board/Board.module.scss";
 import Card from "components/Card/Card";
 import Button from "components/Button/Button";
-import { useTypedDispatch } from "hooks/useTypedDispatch.hook";
-import { useTypedSelector } from "hooks/useTypedSelector.hook";
 import { createWriteOffBetAction } from "store/modules/user/user.actions";
 import { createSelectCardAction } from "store/modules/cards/cards.actions";
 import { ResultEnum } from "store/modules/cards/cards.enum";
 import { v4 } from "uuid";
 import BoardHeader from "components/Board/BoardHeader";
+import { useTypedDispatch, useTypedSelector } from "hooks";
 
 function Board() {
   const { cards, result } = useTypedSelector((state) => ({

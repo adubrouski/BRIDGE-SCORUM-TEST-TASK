@@ -1,4 +1,4 @@
-export function imageToDataUrl(url: string): Promise<string> {
+export function convertImageURLToBase64(url: string): Promise<string> {
   return new Promise((resolve, reject) => {
     const xhr = new XMLHttpRequest();
 

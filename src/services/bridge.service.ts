@@ -1,5 +1,5 @@
 import { validateHttpResponse } from "middleware/validate-http-response.middleware";
-import { imageToDataUrl } from "utils/utils";
+import { convertImageURLToBase64 } from "utils/utils";
 import { ResponseCardEntity } from "types/card.entity";
 
 export default class BridgeService {
@@ -26,7 +26,7 @@ export default class BridgeService {
       .then(validateHttpResponse)
       .then(async (response: { cards: ResponseCardEntity[] }) => {
         const imagesCallbacks = response.cards.map((card) =>
-          imageToDataUrl(card.image)
+          convertImageURLToBase64(card.image)
         );
         const base64Images = await Promise.all(imagesCallbacks);
 
