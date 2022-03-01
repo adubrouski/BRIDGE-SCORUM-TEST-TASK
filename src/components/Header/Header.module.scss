@@ -1,0 +1,41 @@
+.header {
+  width: 100%;
+  height: 70px;
+  padding: 0 15px;
+  background-color: #fff;
+  box-shadow: 0 1px 4px rgba(0, 21, 41, 0.2);
+}
+
+.headerContentWrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 100%;
+
+  h1 {
+    margin: 0;
+  }
+}
+
+.balanceInfo {
+  margin: 0 15px 0 auto;
+}
+
+.titleWrap {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--main-color);
+  padding: 0 10px;
+  border-radius: 10px;
+
+  img {
+    width: 55px;
+  }
+}
+
+.logoWrap {
+  background-color: var(--main-color);
+  padding: 0 15px;
+  border-radius: 10px;
+}

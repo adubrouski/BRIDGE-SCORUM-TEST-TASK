@@ -1,0 +1,20 @@
+{
+  "env": {
+    "browser": true
+  },
+  "rules": {
+    "jsx-a11y/label-has-associated-control": "off",
+    "import/prefer-default-export": "off",
+    "react/require-default-props": "off",
+    "@typescript-eslint/default-param-last": ["off"]
+  },
+  "parser": "@typescript-eslint/parser",
+  "extends": ["airbnb", "airbnb-typescript", "prettier"],
+  "plugins": [
+    "@typescript-eslint",
+    "eslint-plugin-prettier"
+  ],
+  "parserOptions": {
+     "project": "./tsconfig.json"
+  }
+}

@@ -1,0 +1,26 @@
+.loginPageWrap {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.loginPageForm {
+  width: 250px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  row-gap: 10px;
+}
+
+.loginButtonWrapper {
+  display: flex;
+  justify-content: center;
+}
+
+.logo {
+  width: 150px;
+  margin-bottom: 15px;
+}

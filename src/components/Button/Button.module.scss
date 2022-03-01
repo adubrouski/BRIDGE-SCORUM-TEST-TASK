@@ -1,0 +1,29 @@
+.button {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  align-items: center;
+  padding: 5px 15px;
+  border: none;
+  border-radius: 3px;
+  outline: none;
+  background-color: var(--main-color);
+  color: #ffe7d5;
+  font-size: 16px;
+  cursor: pointer;
+  &:active {
+    transform: translateY(2px);
+  }
+  &:disabled {
+    background-color: rgba(0, 0, 0, 0.2);
+    border: 1px solid rgba(0, 0, 0, 0.3);
+    color: #565656;
+    cursor: not-allowed;
+    &:active {
+      transform: initial;
+    }
+  }
+  &:focus {
+    outline: 3px solid var(--main-color);
+  }
+}

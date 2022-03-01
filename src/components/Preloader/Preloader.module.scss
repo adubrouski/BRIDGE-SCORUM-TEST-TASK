@@ -1,0 +1,28 @@
+.preloader {
+  width: 20px;
+  height: 20px;
+  border: 5px solid;
+  border-color: var(--main-color) transparent;
+  border-radius: 50%;
+  display: inline-block;
+  animation: rotation 1s linear infinite;
+}
+
+.mediumSize {
+  width: 45px;
+  height: 45px;
+}
+
+.largeSize {
+  width: 80px;
+  height: 80px;
+}
+
+@keyframes rotation {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}

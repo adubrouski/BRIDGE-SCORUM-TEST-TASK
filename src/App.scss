@@ -1,0 +1,21 @@
+@import "css-utils/fonts";
+@import "css-utils/variables";
+
+html {
+  box-sizing: border-box;
+  font-family: "balsamiq_sansregular", sans-serif;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+  font-family: inherit;
+}
+
+.app-wrapper {
+  width: 100%;
+  min-height: 100vh;
+  padding-bottom: 30px;
+  background-color: var(--main-background-color);
+}
