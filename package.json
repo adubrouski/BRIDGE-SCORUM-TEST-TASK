@@ -2,7 +2,7 @@
   "name": "bridge-scorum-test",
   "version": "0.0.1",
   "description": "Test task for SCORUM",
-  "main": "dist/main.js",
+  "main": "src/index.tsx",
   "scripts": {
     "start": "webpack serve --mode development --config config/webpack.config.js",
     "build": "cross-env webpack --config config/webpack.config.js --mode production"
